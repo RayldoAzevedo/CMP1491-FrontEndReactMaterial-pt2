@@ -4,6 +4,9 @@ import Grid from "@mui/material/Grid";
 import { Avatar } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Link from "@mui/material/Link";
 
 
 // Material Icons
@@ -12,23 +15,30 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { pink } from '@mui/material/colors';
 
 
-
 class AddUserCardsComponent extends Component {
     //definicao das props e state
     constructor(props) {
         super(props);
         this.state = {
             id: '',
-            nome: '',
-            sexo: '',
-            idade: ''
+            firstName: '',
+            lastName: '',
+            email: '',
+            idade: '',
+            firstNameVazio: false,
+            secondNameVazio: false,
+            emailVazio: false,
+            passwordVazio: false
         }
         this.saveUser = this.saveUser.bind(this);
     }
     //salva o usuario no backend
     saveUser = (e) => {
         //TODO: obtem os dados do state e envia para o backend salvar os dados
-        this.setState({ nomeVazio: (this.state.nome === "") });
+        this.setState({ firstNameVazio: (this.state.firstName === "") });
+        this.setState({ secondNameVazio: (this.state.lastName === "") });
+        this.setState({ emailVazio: (this.state.email === "") });
+        this.setState({ passwordVazio: (this.state.password === "") });
     }
     //modifica o valor do state do campo alterado
     onChange = (e) =>
@@ -39,36 +49,74 @@ class AddUserCardsComponent extends Component {
             <Container maxWidth="sm">
                 <div>
                     <form>
-                        <Grid container
-                            alignItems="center"
-                            direction="column">
-                            <Avatar sx={{ bgcolor: pink[500] }}>
-                                <LockOutlinedIcon />
-                            </Avatar>
-                            <h2>Sign Up</h2>
-                            <Grid container
-                                direction="row"
-                                spacing={0}>
-                                <Grid items xs={6}>
-                                    <TextField
-                                        label="First Name"
-                                        required
-                                        helperText={this.state.nomeVazio ? "Preencha o campo" : null} error={this.state.nomeVazio}>
-                                        onChange={this.onChange}
-                                    />
+                        <Grid container spacing={2} >
+                            <Grid container spacing={0.5} direction="column" alignItems="center" justifyContent="center">
+                                <Grid item >
+                                    <Avatar sx={{ bgcolor: pink[500] }}>
+                                        <LockOutlinedIcon />
+                                    </Avatar>
                                 </Grid>
-                                <Grid items xs={6}>
-                                    <TextField
-                                        label="Obeservações"
-                                        onChange={this.onChange}
-                                    />
+                                <Grid item >
+                                    <h2>Sign Up</h2>
                                 </Grid>
                             </Grid>
-                            <Button variant="contained" color="primary" disableElevation onClick={(e) => {
-                                this.saveUser(e)
-                            }}>
-                                Salvar
-                            </Button>
+                            <Grid item xs={6} direction="row">
+                                <TextField
+                                    label="First Name"
+                                    required
+                                    fullWidth
+                                    helperText={this.state.firstNameVazio ? "Preencha o campo" : null} error={this.state.firstNameVazio}
+                                    onChange={this.onChange}>
+
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={6} direction="row">
+                                <TextField
+                                    label="Last Name"
+                                    required
+                                    fullWidth
+                                    helperText={this.state.secondNameVazio ? "Preencha o campo" : null} error={this.state.secondNameVazio}
+                                    onChange={this.onChange}>
+
+                                </TextField>
+
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    label="E-mail Adress"
+                                    required
+                                    fullWidth
+                                    helperText={this.state.emailVazio ? "Preencha o campo" : null} error={this.state.emailVazio}
+                                    onChange={this.onChange}>
+
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    label="Password"
+                                    type="password"
+                                    required
+                                    fullWidth
+                                    helperText={this.state.emailVazio ? "Preencha o campo" : null} error={this.state.emailVazio}
+                                    onChange={this.onChange}>
+
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormControlLabel control={<Checkbox />} label="I want to receive inspiration, marketing promotions and updates via email" />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Button variant="contained" color="primary" disableElevation fullWidth onClick={(e) => {
+                                    this.saveUser(e)
+                                }}>
+                                    SIGN UP
+                                </Button>
+                            </Grid>
+                            <Grid item xs={6}/>
+                            <Grid item xs={6}>
+                                <Link href="#">Already have an account? Sign In</Link>
+                            </Grid>
+
                         </Grid>
                     </form>
                 </div >
