@@ -47,6 +47,7 @@ class AddUserMaterialComponent extends Component {
                     <h2 className="text-center">Cadastro de Aluno</h2>
                     <form>
                         <Grid container spacing={2}>
+                            
                             {/*Nome */}
                             <Grid item xs={12}>
                                 <TextField
@@ -100,23 +101,33 @@ class AddUserMaterialComponent extends Component {
                                     id="ValueMensalidade" name="Mensalidade" label="Valor da Mensalidade" value={this.state.Mensalidade} onChange={this.onChange}>
                                 </TextField>
                             </Grid>
+
+                            {/* Curso */}
+                            <Grid item xs={12}>
+                                <FormControl fullWidth>
+                                    <FormLabel id="sexoLabel">Curso</FormLabel>
+                                    <RadioGroup
+                                        defaultValue="ADS"
+                                        name="cursoRadio"
+                                    >
+                                        <FormControlLabel value="CC" control={<Radio />} label="Ciência da Computação" />
+                                        <FormControlLabel value="EC" control={<Radio />} label="Engenharia da Computação" />
+                                        <FormControlLabel value="ADS" control={<Radio />} label="Analise e Desenvolvimento de Sistemas" />
+                                    </RadioGroup>
+                                </FormControl>
+                            </Grid>
+
+                            {/* Obeservações */}
+                            <Grid item xs={12}>
+                                <TextField
+                                    label="Obeservações"
+                                    multiline
+                                    onChange={this.onChange}
+                                />
+                            </Grid>
                         </Grid>
                         <br></br>
 
-                        {/* Curso */}
-                        <Grid item xs={12}>
-                            <FormControl fullWidth>
-                                <FormLabel id="sexoLabel">Curso</FormLabel>
-                                <RadioGroup
-                                    defaultValue="ADS"
-                                    name="cursoRadio"
-                                >
-                                    <FormControlLabel value="CC" control={<Radio />} label="Ciência da Computação" />
-                                    <FormControlLabel value="EC" control={<Radio />} label="Engenharia da Computação" />
-                                    <FormControlLabel value="ADS" control={<Radio />} label="Analise e Desenvolvimento de Sistemas" />
-                                </RadioGroup>
-                            </FormControl>
-                        </Grid>
                         <Button variant="contained" color="primary" disableElevation onClick={(e) => {
                             this.saveUser(e)
                         }}>
