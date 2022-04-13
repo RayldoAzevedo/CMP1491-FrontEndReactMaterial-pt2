@@ -11,9 +11,9 @@ const AppRouter = () => {
             <div className="col-md-6">
                 <h1 className="text-center" style={style}>Primeira Aplicação em React</h1>
                 <Routes>
-                    <Route path="/" exact element={<ListUserComponent />} />
+                    <Route path="/add-material" exact element={<ListUserComponent />} />
                     <Route path="/add" element={<AddUserComponent />} />]
-                    <Route path="/add-material" element={<AddUserMaterialComponent/>} />
+                    <Route path="/" element={<AddUserMaterialComponent/>} />
                 </Routes>
             </div>
         </Router>
