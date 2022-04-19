@@ -13,7 +13,7 @@ const AppRouter = () => {
                 <br /> <br />
                 <Routes>
                     <Route path="/adduser-cards" exact element={<ListUserComponent />} />
-                    <Route path="/add" element={<AddUserComponent />} />]
+                    <Route path="/add" element={<AddUserComponent />} />
                     <Route path="/add-material" element={<AddUserMaterialComponent/>} />
                     <Route path="/" element={<AddUserCardsComponent/>} />
                 </Routes>
